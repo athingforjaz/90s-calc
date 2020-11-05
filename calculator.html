@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90s calc</title>
+    <style>
+        body {
+            background-image: url("https://previews.123rf.com/images/krikhill/krikhill1905/krikhill190500115/123750323-90s-pattern-memphis-trend-nineties-pattern-pop-art-color-background-vector-illustration-hipster-styl.jpg"); 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: magenta;
+            background: white;
+            border: 1px solid black;
+            box-shadow: 0 0 10px 31f5ee;
+            padding: 10px;
+        }
+        .calculator{
+            width: 250px;
+            font-size: 20px;
+            margin: auto;
+            border:2px solid black;
+            border-radius:10px 10px 10px 10px;
+            background-color: #14fff7; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content:center;
+        }
+        .grid{
+            display: grid; 
+            grid-template-columns: 52px 52px 52px 52px;
+            width: 200px;
+            padding: 15px; 
+        }
+        .number{
+            height: 50px;
+            width: 50px;
+            background-color: yellow;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius:10px 10px 10px 10px;
+
+        }
+        .number:hover {
+        cursor: pointer;
+        background-color: blueviolet
+        }     
+        .equal{
+            height: 50px;
+            width: 206px;
+            border: 2px solid black;
+            background-color: #E483EB;
+            border-radius:10px 10px 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        } 
+        .equal:hover {
+        cursor: pointer;
+        background-color: blueviolet
+        }
+        .operator{
+            height: 50px;
+            width: 50px;
+            border: 1px solid black;
+            background-color: magenta;
+            border-radius:10px 10px 10px 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        } 
+        .operator:hover {
+        cursor: pointer;
+        background-color: blueviolet
+        }
+
+        .display{
+            height: 50px;
+            width: 200px;
+            background-color: #31f5a6;
+            border: 2px solid black;
+            border-radius:10px 10px 10px 10px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+        }
+        .midi {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@13,npm/@magenta/music@1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1"></script>
+    <script>
+        let expression = "";
+        function buttonFunction(input) {
+            expression = expression + input;
+            document.getElementById("display").innerHTML = expression;
+        }
+        function clearFunction() {
+            expression = "";
+            document.getElementById("display").innerHTML = "0";
+        }
+        function doMath(expression) {
+            expression = document.getElementById("display").innerHTML
+            answer = eval(expression);
+            document.getElementById("display").innerHTML = answer;
+        }
+        function hoorayFunction(hooray) {
+            document.getElementById("display").innerHTML = "<marquee>hooray!</marquee>";
+            calculator.style.boxShadow='0 0 15px magenta';
+            display.style.boxShadow='0 0 15px magenta';
+            let fancy_color = '#'+Math.floor(Math.random()*16777215).toString(16);
+            display.style.backgroundColor=fancy_color;
+        }
+    </script>
+</head>
+<body>
+    <h1><marquee>~*~ welcome to 90s calc ~*~</marquee></h1>
+    <div class = "calculator" id="calculator">
+        <div class = "display" id="display">here there be math</div>
+    <div class = "grid">
+        <div class = "operator" id="plus" onclick="buttonFunction('+')">+</div>
+        <div class = "operator" id="minus" onclick="buttonFunction('-')">-</div>
+        <div class = "operator" id="multiply" onclick="buttonFunction('*')">*</div>
+        <div class = "operator" id="divide" onclick="buttonFunction('/')">/</div>
+        <div class = "number" id="0" onclick="buttonFunction(0)">0</div>
+        <div class = "number" id="1" onclick="buttonFunction(1)">1</div>
+        <div class = "number" id="2" onclick="buttonFunction(2)">2</div>
+        <div class = "number" id="3" onclick="buttonFunction(3)">3</div>
+        <div class = "number" id="4" onclick="buttonFunction(4)">4</div>
+        <div class = "number" id="5" onclick="buttonFunction(5)">5</div>
+        <div class = "number" id="6" onclick="buttonFunction(6)">6</div>
+        <div class = "number" id="7" onclick="buttonFunction(7)">7</div>
+        <div class = "number" id="8" onclick="buttonFunction(8)">8</div>
+        <div class = "number" id="9" onclick="buttonFunction(9)">9 </div>
+        <div class = "number" id="0" onclick="hoorayFunction('hooray!')">!</div>
+        <div class = "number" id="clear" onclick="clearFunction()">clear</div>
+    </div>  
+        <div class = "equal" id="equal" onclick="doMath()">=</div>
+    </div>
+        
+    
+    <div class="midi">
+        <midi-player src="https://bitmidi.com/uploads/87216.mid" sound-font visualizer="#myVisualizer"></midi-player><midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+    </div>
+
+    <!-- ORIGINAL JAVASCRIPT MIDI PLAYER CODE
+        <html>    <head>        <script src="https://cdn.jsdelivr.net/combine/npm/tone@13,npm/@magenta/music@1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1"></script>    </head>        <body>        <midi-player  src="file:///SavedByTheBell.mid"  sound-font visualizer="#myVisualizer"></midi-player><midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>    </body></html> -->
+
+</body>
+</html>
