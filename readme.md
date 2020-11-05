@@ -5,6 +5,8 @@ This 90s styled calculator lets you do math but also experience some of that rad
 
 Also plays a fun midi, if you're not in Safari!
 
+![the calc](images/90s-calc-img.png "the calc")
+
 # To Run
 - Clone & doubleclick that file to load into a browser. 
 
