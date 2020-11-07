@@ -18,9 +18,13 @@ Also plays a fun midi, if you're not in Safari!
 # To-Do
 - Find a better midi file
 - Make a repeating background
-- Make the hooray button more fun 
-    - Make everything glow?
-    - Change colors on everything? 
-    - Reset buttons randomly?
-    - Change the background?
+- Make the hooray button more fun: my never ending quest
 - Explore adding CSS styling with classList.add in Javascript 
+
+# To-Done
+- More fun hooray button: drop shadows on everything
+- Better styling on the buttons
+- More fun hooray button: pleasing 90s color palette
+- More fun hooray button: more things change colors
+- More fun hooray button: random color-changing buttons!
+- More fun hooray button: ...and it's on a timer!

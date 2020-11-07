@@ -30,13 +30,15 @@
             display: flex;
             flex-direction: column;
             align-items: center; 
-            justify-content:center;
+            justify-content: center;
         }
         .grid{
             display: grid; 
             grid-template-columns: 52px 52px 52px 52px;
-            width: 200px;
-            padding: 15px; 
+            grid-template-rows: 52px 52px 52px 52px;
+            column-gap: 2px;
+            row-gap: 2px;
+            margin: 15px; 
         }
         .number{
             height: 50px;
@@ -119,12 +121,28 @@
             answer = eval(expression);
             document.getElementById("display").innerHTML = answer;
         }
-        function hoorayFunction(hooray) {
-            document.getElementById("display").innerHTML = "<marquee>hooray!</marquee>";
-            calculator.style.boxShadow='0 0 15px magenta';
-            display.style.boxShadow='0 0 15px magenta';
-            let fancy_color = '#'+Math.floor(Math.random()*16777215).toString(16);
-            display.style.backgroundColor=fancy_color;
+        function getFancyColor () {
+            var colors = ['#e222b4', '#f7f708', '#ea86ed', '#dcb9dc', '#00DED3', '#FF0090', '#820EC9', '#48FF00', '#C900AB', '#e9008d', '#f6841b', '#6eb63f', '#05aded'];
+            var fancyColor = colors[Math.floor(Math.random() * colors.length)];
+            return fancyColor;
+        }
+        function hoorayFunction(hooray) { 
+            var colorString = '0 0 15px ';
+            calculator.style.boxShadow = colorString + getFancyColor();
+            display.style.boxShadow = colorString + getFancyColor();
+            equal.style.boxShadow = colorString + getFancyColor();
+        
+                setInterval(
+                function () {
+                    var myButtons = document.getElementsByClassName("number");
+                    var buttonLength = myButtons.length;
+                    for (var i=0; i < buttonLength; i++){
+                    myButtons[i].style.boxShadow = colorString + getFancyColor();
+                    myButtons[i].style.backgroundColor = getFancyColor();
+                }            
+                    display.style.backgroundColor = getFancyColor();
+                    equal.style.backgroundColor = getFancyColor();
+                },1500);
         }
     </script>
 </head>
@@ -133,10 +151,10 @@
     <div class = "calculator" id="calculator">
         <div class = "display" id="display">here there be math</div>
     <div class = "grid">
-        <div class = "operator" id="plus" onclick="buttonFunction('+')">+</div>
-        <div class = "operator" id="minus" onclick="buttonFunction('-')">-</div>
-        <div class = "operator" id="multiply" onclick="buttonFunction('*')">*</div>
-        <div class = "operator" id="divide" onclick="buttonFunction('/')">/</div>
+        <div class = "operator number" id="plus" onclick="buttonFunction('+')">+</div>
+        <div class = "operator number" id="minus" onclick="buttonFunction('-')">-</div>
+        <div class = "operator number" id="multiply" onclick="buttonFunction('*')">*</div>
+        <div class = "operator number" id="divide" onclick="buttonFunction('/')">/</div>
         <div class = "number" id="0" onclick="buttonFunction(0)">0</div>
         <div class = "number" id="1" onclick="buttonFunction(1)">1</div>
         <div class = "number" id="2" onclick="buttonFunction(2)">2</div>
