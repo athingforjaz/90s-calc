@@ -127,17 +127,16 @@
             return fancyColor;
         }
         function hoorayFunction(hooray) { 
-            var colorString = '0 0 15px ';
-            calculator.style.boxShadow = colorString + getFancyColor();
-            display.style.boxShadow = colorString + getFancyColor();
-            equal.style.boxShadow = colorString + getFancyColor();
+            calculator.style.boxShadow = '0 0 15px magenta';
+            display.style.boxShadow = '0 0 15px magenta';
+            equal.style.boxShadow = '0 0 15px magenta';
         
                 setInterval(
                 function () {
                     var myButtons = document.getElementsByClassName("number");
                     var buttonLength = myButtons.length;
                     for (var i=0; i < buttonLength; i++){
-                    myButtons[i].style.boxShadow = colorString + getFancyColor();
+                    myButtons[i].style.boxShadow = '0 0 15px magenta';
                     myButtons[i].style.backgroundColor = getFancyColor();
                 }            
                     display.style.backgroundColor = getFancyColor();
